@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+.env
+*.env.local
+*.env.production
+
+# Logs
+logs/
+*.log
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build artifacts
+dist/
+build/
+*.tgz
+
+# Operating system
+.DS_Store
+Thumbs.db
+
+# Data and generated files
+generated/
+*.csv (unless tracked for reference)
