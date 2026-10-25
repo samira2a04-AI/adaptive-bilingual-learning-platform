@@ -1,0 +1,77 @@
+# Frontend Package (Week 6 Draft)
+
+React application for the Adaptive Bilingual Learning Platform frontend.
+
+## Dependencies
+
+### Core
+- `react` `react-dom` - UI library
+- `react-router-dom` - Client-side routing
+- `axios` - API client for backend calls
+
+### State & Side Effects
+- `zustand` - Lightweight state management (alternative to Redux)
+- `sweetalert2` - Beautiful modals for user confirmations
+
+### i18n & Bilingual Support
+- `react-i18next` - Internationalization
+- `i18next` - Core i18n engine
+- `i18next-browser-languagedetector` - Browser language detection
+
+### ARIA & Accessibility
+- `@testing-library/react` - Testing utilities
+- `@testing-library/user-event` - User interaction testing
+
+### Development
+- `vite` - Build tool and dev server
+- `eslint` - Linting
+- `prettier` - Code formatting
+
+## Scripts
+
+```json
+{
+  "dev": "vite",
+  "build": "vite build",
+  "preview": "vite preview",
+  "test": "vitest",
+  "lint": "eslint .",
+  "format": "prettier --write ."
+}
+```
+
+## Bilingual Configuration
+
+```javascript
+// vite.config.js
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import i18n from 'i18next'
+import detector from 'i18next-browser-languagedetector'
+import { initReactI18next } from 'react-i18next'
+
+i18n.use(detector).use(initReactI18next).init({
+  lng: 'en', // detected browser language or default
+  fallbackLng: 'en',
+  resources: {
+    en: { translation: enTranslations },
+    ar: { translation: arTranslations }
+  },
+  interpolation: {
+    escapeValue: false
+  }
+})
+```
+
+## Arabic RTL Support
+
+```css
+/* App-level dir override based on language */
+[lang="ar"] {
+  direction: rtl;
+}
+
+[lang="en"] {
+  direction: ltr;
+}
+```
